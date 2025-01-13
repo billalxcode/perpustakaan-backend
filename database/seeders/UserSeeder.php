@@ -17,21 +17,21 @@ class UserSeeder extends Seeder
         Role::findOrCreate('officer');
         Role::findOrCreate('member');
 
-        $admin = User::create([
+        $admin = User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
         ]);
         $admin->assignRole('admin');
 
-        $officer = User::create([
+        $officer = User::factory()->create([
             'name' => 'Officer',
             'email' => 'officer@admin.com',
             'password' => bcrypt('password'),
         ]);
         $officer->assignRole('officer');
 
-        $member = User::create([
+        $member = User::factory()->create([
             'name' => 'Member',
             'email' => 'member@admin.com',
             'password' => bcrypt('password'),
