@@ -14,7 +14,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -55,11 +55,11 @@ class User extends Authenticatable implements FilamentUser
     {
         $panelID = $panel->getId();
 
-        if ($panelID === "admin") {
+        if ($panelID === 'admin') {
             return $this->hasRole('admin');
-        } else if ($panelID == "officer") {
+        } elseif ($panelID == 'officer') {
             return $this->hasRole('officer');
-        } else if ($panelID == "member") {
+        } elseif ($panelID == 'member') {
             return $this->hasRole('member');
         } else {
             return false;
