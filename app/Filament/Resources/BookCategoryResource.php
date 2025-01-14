@@ -7,6 +7,7 @@ use App\Models\BookCategory;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BookCategoryResource extends Resource
@@ -22,13 +23,31 @@ class BookCategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->searchable()
+                    ->label('Name'),
+                TextColumn::make('slug')
+                    ->searchable()
+                    ->label('Slug'),
+                TextColumn::make('description')
+                    ->searchable()
+                    ->label('Description'),
+                TextColumn::make('created_at')
+                    ->searchable()
+                    ->label('Created At'),
+                TextColumn::make('parent_id')
+                    ->searchable()
+                    ->label('Parent ID')
+                    ->formatStateUsing(function ($state) {
+                        return BookCategory::find($state)->name ?? "N/A";
+                    }),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
