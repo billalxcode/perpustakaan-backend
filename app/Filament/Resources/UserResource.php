@@ -32,7 +32,13 @@ class UserResource extends Resource
                 TextColumn::make('username')
                     ->searchable()
                     ->sortable(),
-
+                TextColumn::make('email_verified_at')
+                    ->searchable()
+                    ->default('Not Verified')
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
