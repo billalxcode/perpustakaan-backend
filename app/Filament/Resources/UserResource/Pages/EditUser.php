@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
@@ -38,7 +39,7 @@ class EditUser extends EditRecord
                     $record->updateOrFail([
                         'password' => bcrypt($data['password']),
                     ]);
-                })
+                }),
         ];
     }
 
@@ -61,7 +62,7 @@ class EditUser extends EditRecord
                             ->placeholder('Enter your username')
                             ->required()
                             ->label('Username'),
-                    ])
+                    ]),
             ]);
     }
 }
