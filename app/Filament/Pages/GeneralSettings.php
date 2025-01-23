@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Settings\GeneralSettings as Settings;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
 
@@ -25,6 +26,13 @@ class GeneralSettings extends SettingsPage
                         ColorPicker::make('primary_theme_color')
                             ->label('Primary Theme Color')
                             ->default('#22c55e'),
+                        Select::make('locale')
+                            ->label('Locale')
+                            ->native(false)
+                            ->options([
+                                'en' => 'English',
+                                'id' => 'Indonesian',
+                            ]),
                     ]),
             ]);
     }
