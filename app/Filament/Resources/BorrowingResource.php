@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -25,14 +26,18 @@ class BorrowingResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('book.name')
+                    ->label('Name'),
+                TextColumn::make('user.name')
+                    ->label('Borrower'),
+                TextColumn::make('borrowed_at')
+                    ->label('Borrowed At')
+                    ->date(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->actions([])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -51,8 +56,7 @@ class BorrowingResource extends Resource
     {
         return [
             'index' => Pages\ListBorrowings::route('/'),
-            'create' => Pages\CreateBorrowing::route('/create'),
-            'edit' => Pages\EditBorrowing::route('/{record}/edit'),
+            'create' => Pages\CreateBorrowing::route('/create')
         ];
     }
 }
