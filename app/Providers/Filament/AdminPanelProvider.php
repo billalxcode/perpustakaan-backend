@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Settings\GeneralSettings;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -23,13 +24,15 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        $general_settings = new GeneralSettings();
+
         return $panel
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Green,
+                'primary' => $general_settings->primary_theme_color ?? Color::Green,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
