@@ -29,6 +29,9 @@ class BookResource extends Resource
                 ImageColumn::make('cover_image')
                     ->label('Cover Image')
                     ->url(function ($record) {
+                        if (str($record->cover_image)->isUrl()) {
+                            return $record->cover_image;
+                        }
                         return Storage::url($record->cover_image);
                     })
                     ->size(80),
