@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookCategoryResource\Pages;
 use App\Models\BookCategory;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -17,6 +16,7 @@ class BookCategoryResource extends Resource
     protected static ?int $navigationSort = 2;
 
     protected static ?string $navigationGroup = 'Master Data';
+
     protected static ?string $navigationIcon = 'ionicon-list-sharp';
 
     public static function table(Table $table): Table
@@ -39,7 +39,7 @@ class BookCategoryResource extends Resource
                     ->searchable()
                     ->label('Parent ID')
                     ->formatStateUsing(function ($state) {
-                        return BookCategory::find($state)->name ?? "N/A";
+                        return BookCategory::find($state)->name ?? 'N/A';
                     }),
             ])
             ->filters([
@@ -47,7 +47,7 @@ class BookCategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
