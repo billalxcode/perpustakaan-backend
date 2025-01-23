@@ -15,6 +15,14 @@ class CreateBorrowing extends CreateRecord
 {
     protected static string $resource = BorrowingResource::class;
 
+    public function mutateFormDataBeforeCreate(array $data): array {
+        $data['borrowed_at'] = now();
+        $data['notes'] = '';
+        $data['penalty_fee'] = 0;
+        $data['status'] = 'borrowed';
+        return $data;
+    }
+
     public function form(Form $form): Form
     {
         return $form
