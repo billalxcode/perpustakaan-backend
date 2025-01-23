@@ -24,9 +24,9 @@ class ListBorrowings extends ListRecords
         return [
             'all' => Tab::make('All Borrowings'),
             'borrowed' => Tab::make('Borrowed')
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('status', '=', 'borrowed')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'borrowed')),
             'returned' => Tab::make('Returned')
-                ->modifyQueryUsing(fn(Builder $query) => $query->where('status', '=', 'returned')),
+                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'returned')),
         ];
     }
 }

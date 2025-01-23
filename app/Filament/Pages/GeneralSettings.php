@@ -3,7 +3,6 @@
 namespace App\Filament\Pages;
 
 use App\Settings\GeneralSettings as Settings;
-use Filament\Forms;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
@@ -19,12 +18,12 @@ class GeneralSettings extends SettingsPage
     {
         return $form
             ->schema([
-                Section::make("General Settings")
+                Section::make('General Settings')
                     ->schema([
-                        ColorPicker::make("primary_theme_color")
-                            ->label("Primary Theme Color")
-                            ->default("#22c55e"),
-                    ])
+                        ColorPicker::make('primary_theme_color')
+                            ->label('Primary Theme Color')
+                            ->default('#22c55e'),
+                    ]),
             ]);
     }
 }

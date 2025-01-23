@@ -21,9 +21,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('publisher');
             $table->date('published_at');
-            
+
             $table->integer('pages');
-            
+
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('book_categories')->onDelete('cascade');
             $table->timestamps();

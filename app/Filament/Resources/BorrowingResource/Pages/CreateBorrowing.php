@@ -5,7 +5,6 @@ namespace App\Filament\Resources\BorrowingResource\Pages;
 use App\Filament\Resources\BorrowingResource;
 use App\Models\Book;
 use App\Models\User;
-use Filament\Actions;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
@@ -15,11 +14,13 @@ class CreateBorrowing extends CreateRecord
 {
     protected static string $resource = BorrowingResource::class;
 
-    public function mutateFormDataBeforeCreate(array $data): array {
+    public function mutateFormDataBeforeCreate(array $data): array
+    {
         $data['borrowed_at'] = now();
         $data['notes'] = '';
         $data['penalty_fee'] = 0;
         $data['status'] = 'borrowed';
+
         return $data;
     }
 
@@ -27,7 +28,7 @@ class CreateBorrowing extends CreateRecord
     {
         return $form
             ->schema([
-                Section::make("Borrowing Information")  
+                Section::make('Borrowing Information')
                     ->schema([
                         Select::make('book_id')
                             ->label('Book')
@@ -51,7 +52,7 @@ class CreateBorrowing extends CreateRecord
                             ->native(false)
                             ->searchable()
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 }

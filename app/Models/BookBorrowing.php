@@ -20,11 +20,13 @@ class BookBorrowing extends Model
         'status',
     ];
 
-    public function book() {
+    public function book()
+    {
         return $this->belongsTo(Book::class);
     }
 
-    public function user() {
-        return $this->belongsTo(User::class, "borrower_id");
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'borrower_id');
     }
 }

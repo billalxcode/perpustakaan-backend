@@ -3,7 +3,6 @@
 namespace App\Filament\Pages;
 
 use App\Settings\BorrowingSettings;
-use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -12,15 +11,18 @@ use Filament\Pages\SettingsPage;
 class ManageBorrowing extends SettingsPage
 {
     protected static ?int $navigationSort = 2;
-    protected static ?string $navigationGroup = "Settings";
+
+    protected static ?string $navigationGroup = 'Settings';
+
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+
     protected static string $settings = BorrowingSettings::class;
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Section::make("Borrowing Settings")
+                Section::make('Borrowing Settings')
                     ->schema([
                         TextInput::make('borrowing_period')
                             ->label('Borrowing Period')
@@ -41,7 +43,7 @@ class ManageBorrowing extends SettingsPage
                             ->prefix('Rp.')
                             ->suffix('per day')
                             ->helperText('The fine charged per day for overdue books.'),
-                    ])
+                    ]),
             ]);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Filament\Resources\BookResource\Pages;
 
 use App\Filament\Resources\BookResource;
 use App\Models\BookCategory;
-use Filament\Actions\LocaleSwitcher;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;

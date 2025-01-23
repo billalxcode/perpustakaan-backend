@@ -24,7 +24,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        $general_settings = new GeneralSettings();
+        $general_settings = new GeneralSettings;
 
         return $panel
             ->default()
@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 SpatieLaravelTranslatablePlugin::make()
-                    ->defaultLocales(['en'])
+                    ->defaultLocales(['en']),
             ]);
     }
 }
