@@ -21,14 +21,6 @@ class BorrowingResource extends Resource
     protected static ?string $navigationGroup = "Borrowings";
     protected static ?string $navigationIcon = 'fluentui-book-add-24';
 
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                //
-            ]);
-    }
-
     public static function table(Table $table): Table
     {
         return $table
