@@ -12,7 +12,9 @@ use Filament\Pages\SettingsPage;
 class GeneralSettings extends SettingsPage
 {
     protected static ?int $navigationSort = 2;
-    protected static ?string $navigationGroup = "Settings";
+
+    protected static ?string $navigationGroup = 'Settings';
+
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     protected static string $settings = Settings::class;

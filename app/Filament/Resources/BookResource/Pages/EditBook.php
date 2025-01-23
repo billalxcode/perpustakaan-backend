@@ -22,10 +22,11 @@ class EditBook extends EditRecord
         ];
     }
 
-    public function form(\Filament\Forms\Form $form): \Filament\Forms\Form {
+    public function form(\Filament\Forms\Form $form): \Filament\Forms\Form
+    {
         return $form
             ->schema([
-                Section::make("Book Information")
+                Section::make('Book Information')
                     ->schema([
                         TextInput::make('name')
                             ->label('Name')
@@ -46,7 +47,7 @@ class EditBook extends EditRecord
                                     ->pluck('name', 'id')
                             )
                             ->required(),
-                            ]),
+                    ]),
                 Section::make('Additional Information')
                     ->schema([
                         DatePicker::make('published_at')

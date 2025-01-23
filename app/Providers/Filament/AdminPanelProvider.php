@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
     {
         $general_settings = new GeneralSettings;
         App::setLocale($general_settings->locale ?? 'en');
-        
+
         return $panel
             ->default()
             ->id('admin')
