@@ -18,13 +18,6 @@ class CreateBook extends CreateRecord
 {
     protected static string $resource = BookResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            LocaleSwitcher::make()
-        ];
-    }
-
     public function form(Form $form): Form
     {
         return $form
