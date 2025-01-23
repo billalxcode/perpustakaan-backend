@@ -19,4 +19,12 @@ class BookBorrowing extends Model
         'penalty_fee',
         'status',
     ];
+
+    public function book() {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, "borrower_id");
+    }
 }
