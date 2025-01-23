@@ -25,10 +25,12 @@ class GeneralSettings extends SettingsPage
                     ->schema([
                         ColorPicker::make('primary_theme_color')
                             ->label('Primary Theme Color')
-                            ->default('#22c55e'),
+                            ->default('#22c55e')
+                            ->required(),
                         Select::make('locale')
                             ->label('Locale')
                             ->native(false)
+                            ->required()
                             ->options([
                                 'en' => 'English',
                                 'id' => 'Indonesian',
