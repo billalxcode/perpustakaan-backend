@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookResource\Pages;
 use App\Models\Book;
-use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -18,10 +17,13 @@ class BookResource extends Resource
     use Translatable;
 
     protected static ?string $model = Book::class;
+
     protected static ?int $navigationSort = 3;
+
     protected static ?string $navigationGroup = 'Master Data';
+
     protected static ?string $navigationIcon = 'tabler-books';
-    
+
     public static function table(Table $table): Table
     {
         return $table
@@ -29,6 +31,10 @@ class BookResource extends Resource
                 ImageColumn::make('cover_image')
                     ->label('Cover Image')
                     ->url(function ($record) {
+                        if (str($record->cover_image)->isUrl()) {
+                            return $record->cover_image;
+                        }
+
                         return Storage::url($record->cover_image);
                     })
                     ->size(80),
@@ -44,7 +50,7 @@ class BookResource extends Resource
                 TextColumn::make('published_at')
                     ->searchable()
                     ->sortable(),
-                
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

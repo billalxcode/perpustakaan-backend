@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
             $table->foreignId('borrower_id')->constrained('users')->cascadeOnDelete();
-            $table->date('borrowed_at');
+            $table->date('borrowed_at')->default(now());
             $table->date('returned_at')->nullable();
             $table->text('notes')->nullable();
             $table->decimal('penalty_fee', 8, 2)->default(0);

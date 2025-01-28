@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\BookCategory;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 
 class BookCategorySeeder extends Seeder
 {
@@ -26,7 +25,7 @@ class BookCategorySeeder extends Seeder
             if (isset($sub_category->subcategory)) {
                 $this->createSubCategories($sub_category->subcategory, $new_sub_category->id);
             }
-       }
+        }
     }
 
     /**
